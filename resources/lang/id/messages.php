@@ -88,6 +88,14 @@ return [
 
     // User Management
     'manage_users' => 'Kelola Pengguna',
+    'add_user' => 'Tambah Pengguna',
+    'name' => 'Nama',
+    'email' => 'Email',
+    'role' => 'Peran',
+    'actions' => 'Aksi',
+    'admin' => 'Admin',
+    'dosen' => 'Dosen',
+    'mahasiswa' => 'Mahasiswa',
 
     // Module Management
     'add_module' => 'Tambah Modul',

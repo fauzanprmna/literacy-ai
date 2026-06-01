@@ -527,17 +527,17 @@
                     </a>
                 </li>
 
-                <li class="nav-header">{{ __('messages.user_management') }}</li>
+                <li class="nav-header">{{ __('messages.manage_users') }}</li>
                 <li class="nav-item">
                     <a href="{{ route('user.mahasiswa.index') }}" class="nav-link {{ request()->routeIs('user.mahasiswa.*') ? 'active' : '' }}">
                         <i class="bi bi-mortarboard-fill"></i>
-                        <span>{{ __('messages.student_users') }}</span>
+                        <span>{{ __('messages.mahasiswa') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('user.dosen.index') }}" class="nav-link {{ request()->routeIs('user.dosen.*') ? 'active' : '' }}">
                         <i class="bi bi-person-badge-fill"></i>
-                        <span>{{ __('messages.teacher_users') }}</span>
+                        <span>{{ __('messages.dosen') }}</span>
                     </a>
                 </li>
             </ul>
