@@ -91,3 +91,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/dosen/import', [App\Http\Controllers\UserImportExportController::class, 'dosenImport'])->name('dosen.import');
     Route::get('/dosen/export', [App\Http\Controllers\UserImportExportController::class, 'dosenExport'])->name('dosen.export');
 });
+Route::get('/debug-vite', function () {
+    return [
+        'build_exists' => file_exists(public_path('build/manifest.json')),
+        'build_path' => public_path('build/manifest.json'),
+    ];
+});
