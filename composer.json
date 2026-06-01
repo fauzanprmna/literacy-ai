@@ -46,7 +46,9 @@
         "setup": [
             "composer install --no-dev --optimize-autoloader",
             "npm install",
-            "npm run build"
+            "npm run build",
+            "php artisan config:clear",
+            "php artisan optimize:clear"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",

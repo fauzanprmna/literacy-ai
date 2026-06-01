@@ -24,5 +24,9 @@ class AppServiceProvider extends ServiceProvider
         if ($locale) {
             app()->setLocale($locale);
         }
+
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
