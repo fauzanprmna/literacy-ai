@@ -1,0 +1,124 @@
+<?php
+
+return [
+    // Template
+    'dashboard' => 'Beranda',
+    'main_features' => 'FITUR UTAMA',
+    'ai_literacy_assessment' => 'Penilaian Literasi AI',
+    'learning_modules' => 'Modul Pembelajaran',
+    'learning_management' => 'MANAJEMEN PEMBELAJARAN',
+    'answer_templates' => 'Template Jawaban',
+    'manage_questions' => 'Kelola Soal',
+    'settings' => 'Pengaturan',
+    'sign_out' => 'Keluar',
+
+    // Modul/index and by-category
+    'back_to_categories' => 'Kembali ke Kategori',
+    'no_modules_for_category' => 'Tidak ada modul untuk kategori :name.',
+    'view_modules' => 'Lihat Modul',
+    'choose_category_info' => 'Pilih kategori untuk melihat modul pembelajaran yang tersedia.',
+    'no_categories_available' => 'Belum ada kategori modul tersedia.',
+    'manage_modules' => 'Kelola semua modul pembelajaran.',
+    'add_module' => 'Tambah Modul',
+    'no_modules' => 'Belum ada modul.',
+    'table_no' => 'No',
+    'table_module_name' => 'Nama Modul',
+    'table_category' => 'Kategori',
+    'table_content' => 'Isi',
+    'table_actions' => 'Aksi',
+    'view' => 'Lihat',
+    'edit' => 'Edit',
+    'delete' => 'Hapus',
+    'reference' => 'Referensi',
+
+    // Question form
+    'category' => 'Kategori',
+    'question' => 'Pertanyaan',
+    'weight_value' => 'Bobot',
+    'answer_template_optional' => 'Template Jawaban (Opsional)',
+    'question_type' => 'Jenis Pertanyaan',
+    'text' => 'Teks / Isian',
+    'likert' => 'Skala (Likert)',
+    'multiple_choice' => 'Pilihan Ganda',
+
+    // generic
+    'select' => 'Pilih',
+    'answer' => 'Jawaban',
+    'correct' => 'Benar',
+
+    // Pengukuran
+    'instr_likert' => 'Instruksi: Bagian Skala (Likert)',
+    'instr_mc' => 'Instruksi: Bagian Pilihan Ganda',
+    'start_all_likert' => 'Mulai Semua Soal Likert',
+    'finish_all_likert' => 'Selesai Semua Likert',
+    'proceed_to_mc' => 'Lanjutkan ke Pilihan Ganda',
+    'no_mc_questions' => 'Tidak ada soal pilihan ganda.',
+    'assessment_questionnaire' => 'Kuesioner Penilaian',
+    'back' => 'Kembali',
+    'next' => 'Selanjutnya',
+    'submit' => 'Kirim',
+    // Categories
+    'categories' => 'Kategori',
+    'add_category' => 'Tambah Kategori',
+    'manage_categories' => 'Kelola semua kategori.',
+    'save' => 'Simpan',
+    'category_name' => 'Nama Kategori',
+    'category_description' => 'Deskripsi Kategori',
+    'category_weight' => 'Bobot Kategori',
+
+    // Answer templates
+    'add_answer_template' => 'Tambah Template Jawaban',
+    'manage_answer_templates' => 'Kelola semua template jawaban.',
+    'template_name' => 'Nama Template',
+    'no_templates' => 'Belum ada template.',
+    'confirm_delete' => 'Hapus?',
+
+    // Questions Management
+    'question_list' => 'Daftar Pertanyaan',
+    'manage_all_questions' => 'Kelola semua pertanyaan.',
+    'add_question' => 'Tambah Pertanyaan',
+    'detail_question' => 'Detail Pertanyaan',
+    'edit_question' => 'Edit Pertanyaan',
+    'bobot' => 'Bobot',
+    'no_questions' => 'Belum ada pertanyaan.',
+    'header_optional' => 'Header (opsional)',
+    'header' => 'Header',
+    'indonesia' => 'Indonesia',
+    'english' => 'English',
+
+    // User Management
+    'manage_users' => 'Kelola Pengguna',
+
+    // Module Management
+    'add_module' => 'Tambah Modul',
+    'manage_modules' => 'Kelola semua modul pembelajaran.',
+    'module_name' => 'Nama Modul',
+    'module_content' => 'Konten Modul',
+    'module_category' => 'Kategori',
+    'module_category_optional' => 'Kategori Modul (Opsional)',
+    'module_detail' => 'Detail Modul',
+    'module_info' => 'Informasi Modul',
+    'edit_module' => 'Edit Modul',
+    'module_isi' => 'Isi Modul',
+    'module_reference_link' => 'Link Referensi',
+    'module_link_optional' => 'Link (Opsional)',
+    'reference' => 'Referensi',
+    'add_content' => 'Tambah Konten',
+    'content_type_text' => 'Teks',
+    'content_type_file' => 'File',
+    'content_type_link' => 'Link/Video',
+    'content_text_placeholder' => 'Masukkan konten teks...',
+    'content_file_placeholder' => 'Pilih file untuk diunggah',
+    'content_link_placeholder' => 'https://example.com atau https://youtube.com/watch?v=...',
+    'supported_formats' => 'Format yang didukung: PDF, DOCX, XLSX, PPT, MP4, dll.',
+    'enter_video_link' => 'Masukkan URL video atau link eksternal',
+    'select_category' => 'Pilih Kategori',
+    'select_module_category' => 'Pilih Kategori Modul (Opsional)',
+    'choose' => 'Pilih',
+    'are_you_sure' => 'Apakah Anda yakin?',
+    'modules' => 'Modul',
+    'no_modules' => 'Belum ada modul.',
+
+    // Common Actions
+    'update' => 'Perbarui',
+];

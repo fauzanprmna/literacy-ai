@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'settings' => 'Settings',
+    'settings_menu' => 'Settings Menu',
+    'language_preferences' => 'Language Preferences',
+    'language_updated' => 'Language preference updated successfully',
+    'select_language' => 'Select your preferred language for the application interface.',
+    'profile_information' => 'Profile Information',
+    'full_name' => 'Full Name',
+    'email' => 'Email',
+    'roll_number' => 'Roll Number',
+    'role' => 'Role',
+    'profile_managed' => 'Profile information is managed by administrators.',
+    'account_settings' => 'Account Settings',
+    'change_password' => 'Change Password',
+    'update_password' => 'Update your password regularly for better security',
+    'two_factor_auth' => 'Two-Factor Authentication',
+    'add_security_layer' => 'Add an extra layer of security to your account',
+    'coming_soon' => 'Coming Soon',
+    'language' => 'Language',
+    'profile' => 'Profile',
+    'account' => 'Account',
+    'preview' => 'Preview',
+    'save_changes' => 'Save Changes',
+];

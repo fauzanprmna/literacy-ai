@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'settings' => 'Pengaturan',
+    'settings_menu' => 'Menu Pengaturan',
+    'language_preferences' => 'Preferensi Bahasa',
+    'language_updated' => 'Preferensi bahasa berhasil diperbarui',
+    'select_language' => 'Pilih bahasa pilihan Anda untuk antarmuka aplikasi.',
+    'profile_information' => 'Informasi Profil',
+    'full_name' => 'Nama Lengkap',
+    'email' => 'Email',
+    'roll_number' => 'Nomor Induk',
+    'role' => 'Peran',
+    'profile_managed' => 'Informasi profil dikelola oleh administrator.',
+    'account_settings' => 'Pengaturan Akun',
+    'change_password' => 'Ubah Kata Sandi',
+    'update_password' => 'Perbarui kata sandi Anda secara teratur untuk keamanan yang lebih baik',
+    'two_factor_auth' => 'Autentikasi Dua Faktor',
+    'add_security_layer' => 'Tambahkan lapisan keamanan ekstra ke akun Anda',
+    'coming_soon' => 'Segera Hadir',
+    'language' => 'Bahasa',
+    'profile' => 'Profil',
+    'account' => 'Akun',
+    'preview' => 'Pratinjau',
+    'save_changes' => 'Simpan Perubahan',
+];
