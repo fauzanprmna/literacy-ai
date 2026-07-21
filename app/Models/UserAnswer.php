@@ -12,7 +12,9 @@ class UserAnswer extends Model
     protected $fillable = [
         'user_id',
         'question_id',
+        'attempt_id',
         'answer_bobot',
+        'answer_id',
     ];
 
     /**
@@ -21,6 +23,11 @@ class UserAnswer extends Model
     public function question()
     {
         return $this->belongsTo(Question::class, 'question_id');
+    }
+    
+    public function answer_value()
+    {
+        return $this->belongsTo(Answer::class, 'answer_id');
     }
 
     /**

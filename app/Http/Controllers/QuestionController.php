@@ -161,12 +161,14 @@ class QuestionController extends Controller
             ]);
 
             if ($answer) {
-                foreach ($translatedAnswer as $locale => $fields) {
-                    AnswerTranslation::updateOrCreate(
-                        ['answer_id' => $answer->id, 'locale' => $locale],
-                        ['name' => $fields['name']]
-                    );
-                }
+                AnswerTranslation::updateOrCreate(
+                    ['answer_id' => $answer->id, 'locale' => 'id'],
+                    ['name' => $translatedAnswer['id']['name'] ?? '']
+                );
+                AnswerTranslation::updateOrCreate(
+                    ['answer_id' => $answer->id, 'locale' => 'en'],
+                    ['name' => $translatedAnswer['en']['name'] ?? '']
+                );
             }
         }
     }

@@ -101,7 +101,8 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('pengukuran.index') }}" class="nav-link {{ request()->routeIs('pengukuran.*') ? 'active' : '' }}">
+                                    <a href="{{ route('pengukuran.index') }}"
+                                        class="nav-link {{ request()->routeIs('pengukuran.*') ? 'active' : '' }}">
                                         <i class="nav-icon far fa-circle"></i>
                                         <p>Pengukuran</p>
                                     </a>
@@ -113,6 +114,13 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('modul.scraper') }}"
+                                class="nav-link {{ request()->routeIs('modul.scraper') ? 'active' : '' }}">
+                                <i class="nav-icon bi bi-link-45deg"></i>
+                                <p>Sumber Belajar</p>
+                            </a>
                         </li>
                         <!-- More menu items ... -->
                     </ul>

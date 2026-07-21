@@ -7,11 +7,13 @@ use App\Models\Modul;
 use App\Models\ModulContent;
 use App\Models\ModulTranslation;
 use App\Models\Category;
+use App\Models\ML\ScrapedContent;
 use App\Services\TranslationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class ModulController extends Controller
 {
@@ -20,7 +22,7 @@ class ModulController extends Controller
     public function index(): View
     {
         // For mahasiswa view, fetch categories with count of modules
-        if (Auth::user()->role === 'mahasiswa') {
+        if (Auth::user()->role != 'admin') {
             $categories = Category::with('translation')
                 ->withCount('moduls')
                 ->get();
@@ -205,6 +207,58 @@ class ModulController extends Controller
             ->route('modul.index')
             ->with('success', 'Modul berhasil dihapus.');
     }
+    
+    private const KNOWN_SOURCES = ['youtube', 'journal'];
+    private const PER_PAGE      = 12;
+ 
+    public function scraper(Request $request)
+    {
+        $source = $request->query('source');
+ 
+        // ── Query dasar ─────────────────────────────────────────
+        $query = ScrapedContent::with('classification')
+            ->latest();
+ 
+        // ── Filter sumber ────────────────────────────────────────
+        if ($source) {
+            $query->where('source', $source);
+        }
+ 
+        // ── Personalisasi untuk user biasa ───────────────────────
+        $user = Auth::user();
+        if ($user && $user->role !== 'admin') {
+            $weakDimensions = $this->getWeakDimensions($user);
+            if ($weakDimensions->isNotEmpty()) {
+                $query->whereHas('classification', function ($q) use ($weakDimensions) {
+                    $q->whereIn('dimension', $weakDimensions);
+                });
+            }
+        }
+ 
+        $recommendedContents = $query->paginate(self::PER_PAGE)
+            ->withQueryString(); // pertahankan ?source= saat ganti halaman
+ 
+        // ── Hitung jumlah per sumber ─────────────────────────────
+        $rawCounts = ScrapedContent::selectRaw('source, COUNT(*) as total')
+            ->groupBy('source')
+            ->pluck('total', 'source');
+ 
+        $sourceCounts = collect($rawCounts)
+            ->put('all', ScrapedContent::count())
+            ->toArray();
+ 
+        // ── Sumber dinamis selain youtube & journal ───────────────
+        $otherSources = $rawCounts->keys()
+            ->diff(self::KNOWN_SOURCES)
+            ->filter()
+            ->values();
+ 
+        return view('modul.scraper', compact(
+            'recommendedContents',
+            'sourceCounts',
+            'otherSources',
+        ));
+    }
 
     /**
      * Save module contents (text, file, link).
@@ -276,5 +330,34 @@ class ModulController extends Controller
         $sanitized = preg_replace('/ on\w+\s*=\s*["\']?[^"\']*["\']?/i', '', $sanitized);
 
         return $sanitized;
+    }
+ 
+    // ── Dimensi lemah berdasarkan attempt terakhir user ──────────
+    private function getWeakDimensions($user)
+    {
+        $lastAttemptId = $user->answers()
+            ->orderBy('attempt_id', 'desc')
+            ->value('attempt_id');
+ 
+        if (!$lastAttemptId) {
+            return collect();
+        }
+ 
+        $answers = $user->answers()
+            ->where('attempt_id', $lastAttemptId)
+            ->with('question.category')
+            ->get();
+ 
+        $dimensionScores = [];
+ 
+        foreach ($answers as $answer) {
+            $dim = $answer->question->category->name ?? null;
+            if (!$dim) continue;
+            $dimensionScores[$dim] = ($dimensionScores[$dim] ?? 0) + (float) $answer->answer_bobot;
+        }
+ 
+        return collect($dimensionScores)
+            ->filter(fn($score) => $score < 70)
+            ->keys();
     }
 }

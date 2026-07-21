@@ -5,6 +5,7 @@ return [
     'dashboard' => 'Beranda',
     'main_features' => 'FITUR UTAMA',
     'ai_literacy_assessment' => 'Penilaian Literasi AI',
+    'assessment_history' => 'Riwayat Penilaian',
     'learning_modules' => 'Modul Pembelajaran',
     'learning_management' => 'MANAJEMEN PEMBELAJARAN',
     'answer_templates' => 'Template Jawaban',
@@ -98,8 +99,6 @@ return [
     'mahasiswa' => 'Mahasiswa',
 
     // Module Management
-    'add_module' => 'Tambah Modul',
-    'manage_modules' => 'Kelola semua modul pembelajaran.',
     'module_name' => 'Nama Modul',
     'module_content' => 'Konten Modul',
     'module_category' => 'Kategori',
@@ -110,7 +109,6 @@ return [
     'module_isi' => 'Isi Modul',
     'module_reference_link' => 'Link Referensi',
     'module_link_optional' => 'Link (Opsional)',
-    'reference' => 'Referensi',
     'add_content' => 'Tambah Konten',
     'content_type_text' => 'Teks',
     'content_type_file' => 'File',
@@ -125,8 +123,48 @@ return [
     'choose' => 'Pilih',
     'are_you_sure' => 'Apakah Anda yakin?',
     'modules' => 'Modul',
-    'no_modules' => 'Belum ada modul.',
+    'learning_resources' => 'Sumber Belajar',
+    'visit_source' => 'Kunjungi Sumber',
+    'no_source_link' => 'Tidak ada link sumber',
+
+    // Scraped Content
+    'scraped_content' => 'Konten yang Diambil',
+    'scraper_intro' => 'Jelajahi sumber belajar yang dikurasi dari berbagai platform literasi digital.',
+    'no_scraped_content' => 'Belum ada sumber belajar yang tersedia saat ini.',
 
     // Common Actions
     'update' => 'Perbarui',
+
+    // ── History page ──
+    'select_user'              => 'Pilih Pengguna',
+    'attempts'                 => 'Attempts',
+    'statistics_for'           => 'Statistik :name',
+    'total_attempts'           => 'Total Attempts',
+    'average_score'            => 'Rata-rata Skor',
+    'highest_score'            => 'Skor Tertinggi',
+    'lowest_score'             => 'Skor Terendah',
+    'assessment_history_admin' => 'Attempts :name',
+    'assessment_history_user'  => 'Riwayat Asesmen Anda',
+    'date'                     => 'Tanggal',
+    'duration'                 => 'Durasi',
+    'questions'                => 'Soal',
+    'status'                   => 'Status',
+    'done'                     => 'Selesai',
+    'not_done'                 => 'Belum',
+    'questions_count'          => 'pertanyaan',
+    'correct_answers'          => 'Benar',
+    'score_per_category'       => 'Skor per Kategori',
+    'view_detail'              => 'Lihat Detail',
+    'no_history'               => 'Belum ada riwayat asesmen',
+    'no_history_admin'         => 'Pengguna ini belum mengerjakan assessment.',
+    'no_history_user'          => 'Mulai pengukuran literasi AI Anda sekarang.',
+    'start_measurement'        => 'Mulai Pengukuran',
+    
+        // ── Modul / Learning Resources ──
+    'filter_source'            => 'Filter Sumber',
+    'filter_all'               => 'Semua',
+    'filter_journal'           => 'Jurnal',
+    'showing_results'          => 'Menampilkan :from–:to dari :total konten',
+    'no_description'           => 'Tidak ada deskripsi.',
+    'no_content_for_source'    => 'Tidak ada konten dari sumber ":source".',
 ];

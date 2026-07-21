@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Dashboard') - Literacy AI</title>
+    <title>@yield('title', 'Dashboard') - LiteraSense</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('head')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+        crossorigin="anonymous" />
     <style>
         :root {
             --green-dark: #0d2b1f;
@@ -29,8 +30,8 @@
             --gray-400: #8fa89d;
             --gray-600: #4a6358;
             --gray-800: #243b30;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,.05);
-            --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, .05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, .08);
             --sidebar-w: 260px;
             --radius-sm: 8px;
             --radius-md: 12px;
@@ -39,7 +40,9 @@
             --topbar-h: 64px;
         }
 
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -482,13 +485,14 @@
             <div class="sidebar-logo-icon">
                 <i class="bi bi-mortarboard-fill"></i>
             </div>
-            <span class="sidebar-logo-text">Literacy<span>AI</span></span>
+            <span class="sidebar-logo-text">Literacy<span>Sense</span></span>
         </div>
 
         <div class="sidebar-scroll">
             <ul style="list-style:none;">
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}"
+                        class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>{{ __('messages.dashboard') }}</span>
                     </a>
@@ -496,15 +500,31 @@
 
                 <li class="nav-header">{{ __('messages.main_features') }}</li>
                 <li class="nav-item">
-                    <a href="{{ route('pengukuran.index') }}" class="nav-link {{ request()->routeIs('pengukuran.*') ? 'active' : '' }}">
+                    <a href="{{ route('pengukuran.index') }}"
+                        class="nav-link {{ request()->routeIs('pengukuran.*') ? 'active' : '' }}">
                         <i class="bi bi-patch-check-fill"></i>
                         <span>{{ __('messages.ai_literacy_assessment') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('modul.index') }}" class="nav-link {{ request()->routeIs('modul.*') ? 'active' : '' }}">
+                    <a href="{{ route('assessments.history') }}"
+                        class="nav-link {{ request()->routeIs('assessments.*') ? 'active' : '' }}">
+                        <i class="bi bi-clock-history"></i>
+                        <span>{{ __('messages.assessment_history') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('modul.index') }}"
+                        class="nav-link {{ request()->routeIs('modul.*') ? 'active' : '' }}">
                         <i class="bi bi-book-half"></i>
                         <span>{{ __('messages.learning_modules') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('scraper') }}"
+                        class="nav-link {{ request()->routeIs('scraper') ? 'active' : '' }}">
+                        <i class="nav-icon bi bi-link-45deg"></i>
+                        <span>{{ __('messages.learning_resources') }}</span>
                     </a>
                 </li>
             </ul>
@@ -537,8 +557,10 @@
 
         <div class="topbar-right">
             <div class="lang-pill">
-                <a href="{{ route('locale.set', ['locale' => 'en']) }}" class="{{ app()->getLocale() === 'en' ? 'active' : '' }}">EN</a>
-                <a href="{{ route('locale.set', ['locale' => 'id']) }}" class="{{ app()->getLocale() === 'id' ? 'active' : '' }}">ID</a>
+                <a href="{{ route('locale.set', ['locale' => 'en']) }}"
+                    class="{{ app()->getLocale() === 'en' ? 'active' : '' }}">EN</a>
+                <a href="{{ route('locale.set', ['locale' => 'id']) }}"
+                    class="{{ app()->getLocale() === 'id' ? 'active' : '' }}">ID</a>
             </div>
 
             <a href="{{ route('settings.index') }}" class="topbar-btn" title="{{ __('messages.settings') }}">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Literacy AI</title>
+    <title>Login - LiteraSense</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -16,11 +16,8 @@
         <div
             class="relative w-full max-w-xl rounded-[2rem] auth-card border border-emerald-700/20 p-8 shadow-2xl shadow-emerald-950/10">
             <div class="mb-8 text-center">
-                <span
-                    class="inline-flex items-center justify-center rounded-full bg-emerald-900/10 px-4 py-2 text-sm font-semibold text-emerald-100 shadow-inner shadow-emerald-950/10">
-                    Selamat Datang
-                </span>
-                <h1 class="mt-4 text-4xl font-black tracking-tight text-emerald-950">Literacy AI</h1>
+
+                <h1 class="mt-4 text-4xl font-black tracking-tight text-emerald-950">LiteraSense</h1>
                 <p class="mt-3 text-sm text-slate-600">Masuk ke akun Anda dengan mudah dan cepat</p>
             </div>
 

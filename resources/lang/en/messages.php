@@ -5,6 +5,7 @@ return [
     'dashboard' => 'Dashboard',
     'main_features' => 'MAIN FEATURES',
     'ai_literacy_assessment' => 'AI Literacy Assessment',
+    'assessment_history' => 'Assessment History',
     'learning_modules' => 'Learning Modules',
     'learning_management' => 'LEARNING MANAGEMENT',
     'answer_templates' => 'Answer Templates',
@@ -90,8 +91,6 @@ return [
     'manage_users' => 'Manage Users',
 
     // Module Management
-    'add_module' => 'Add Module',
-    'manage_modules' => 'Manage all learning modules.',
     'module_name' => 'Module Name',
     'module_content' => 'Module Content',
     'module_category' => 'Category',
@@ -102,7 +101,6 @@ return [
     'module_isi' => 'Module Content',
     'module_reference_link' => 'Reference Link',
     'module_link_optional' => 'Link (Optional)',
-    'reference' => 'Reference',
     'add_content' => 'Add Content',
     'content_type_text' => 'Text',
     'content_type_file' => 'File',
@@ -117,8 +115,50 @@ return [
     'choose' => 'Choose',
     'are_you_sure' => 'Are you sure?',
     'modules' => 'Modules',
-    'no_modules' => 'No modules yet.',
+    'learning_resources' => 'Learning Resources',
+    'visit_source' => 'Visit Source',
+    'no_source_link' => 'No source link',
+
+    // Scraped Content
+    'scraped_content' => 'Scraped Content',
+    'scraper_intro' => 'Explore curated learning resources from various digital literacy platforms.',
+    'no_scraped_content' => 'No learning resources available at the moment.',
 
     // Common Actions
     'update' => 'Update',
+
+    // ── History page ──
+    'select_user'              => 'Select User',
+    'email'                    => 'Email',
+    'role'                     => 'Role',
+    'attempts'                 => 'Attempts',
+    'statistics_for'           => 'Statistics for :name',
+    'total_attempts'           => 'Total Attempts',
+    'average_score'            => 'Average Score',
+    'highest_score'            => 'Highest Score',
+    'lowest_score'             => 'Lowest Score',
+    'assessment_history_admin' => 'Attempts for :name',
+    'assessment_history_user'  => 'Your Assessment History',
+    'date'                     => 'Date',
+    'duration'                 => 'Duration',
+    'questions'                => 'Questions',
+    'status'                   => 'Status',
+    'done'                     => 'Completed',
+    'not_done'                 => 'Pending',
+    'questions_count'          => 'questions',
+    'correct_answers'          => 'Correct',
+    'score_per_category'       => 'Score per Category',
+    'view_detail'              => 'View Detail',
+    'no_history'               => 'No assessment history yet',
+    'no_history_admin'         => "This user hasn't taken any assessment yet.",
+    'no_history_user'          => 'Start measuring your AI literacy now.',
+    'start_measurement'        => 'Start Measurement',
+
+    // ── Modul / Learning Resources ──
+    'filter_source'            => 'Filter Source',
+    'filter_all'               => 'All',
+    'filter_journal'           => 'Journal',
+    'showing_results'          => 'Showing :from–:to of :total items',
+    'no_description'           => 'No description available.',
+    'no_content_for_source'    => 'No content from source ":source".',
 ];

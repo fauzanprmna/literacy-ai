@@ -25,7 +25,7 @@ class DashboardController extends Controller
             $sessionStart = $latestAnswer->updated_at->copy()->subMinute();
 
             $userAnswers = UserAnswer::where('user_id', $userId)
-                ->where('updated_at', '>=', $sessionStart)
+                ->where('attempt_id', $latestAnswer->attempt_id)
                 ->with([
                     'question.category',
                     'question.answerTemplate.defaultAnswers',
@@ -140,8 +140,8 @@ class DashboardController extends Controller
             }
 
             $totalTestCount = UserAnswer::where('user_id', $userId)
-                ->distinct('created_at')
-                ->count();
+                ->distinct('attempt_id')
+                ->count('attempt_id');
         }
 
         return view('dashboard', compact(

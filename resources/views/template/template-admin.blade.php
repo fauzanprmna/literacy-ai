@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Dashboard') - Literacy AI Admin</title>
+    <title>@yield('title', 'Dashboard') - LiteraSense Admin</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('head')
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +23,8 @@
             --green-500: #2a9468;
             --green-100: #d4f0e4;
             --green-50: #edf9f4;
+            --red-600: #dc2626;
+            --red-700: #b91c1c;
             --white: #ffffff;
             --gray-50: #f8faf9;
             --gray-100: #f0f4f2;
@@ -481,18 +483,17 @@
             <div class="sidebar-logo-icon">
                 <i class="bi bi-mortarboard-fill"></i>
             </div>
-            <span class="sidebar-logo-text">Literacy<span>AI</span></span>
+            <span class="sidebar-logo-text">Literacy<span>Sense</span></span>
         </div>
 
         <div class="sidebar-scroll">
             <ul style="list-style:none;">
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>{{ __('messages.dashboard') }}</span>
                     </a>
                 </li>
-
                 <li class="nav-header">{{ __('messages.main_features') }}</li>
                 <li class="nav-item">
                     <a href="{{ route('pengukuran.index') }}" class="nav-link {{ request()->routeIs('pengukuran.*') ? 'active' : '' }}">
@@ -504,6 +505,13 @@
                     <a href="{{ route('modul.index') }}" class="nav-link {{ request()->routeIs('modul.*') ? 'active' : '' }}">
                         <i class="bi bi-book-half"></i>
                         <span>{{ __('messages.learning_modules') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('assessments.history') }}"
+                        class="nav-link {{ request()->routeIs('assessments.*') ? 'active' : '' }}">
+                        <i class="bi bi-clock-history"></i>
+                        <span>{{ __('messages.assessment_history') }}</span>
                     </a>
                 </li>
 

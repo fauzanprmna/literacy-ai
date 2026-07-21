@@ -1,16 +1,15 @@
+{{-- resources/views/welcome.blade.php --}}
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Literacy AI — Asesmen Literasi Digital</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>LiteraSense — Platform Asesmen Literasi AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
-        crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
 
     <style>
         *,
@@ -23,8 +22,8 @@
 
         :root {
             --green-dark: #0d2b1f;
-            --green-600: #1a5c40;
-            --green-500: #2a9468;
+            --green-700: #1a5c40;
+            --green-600: #2a8f6d;
             --green-100: #d4f0e4;
             --green-50: #edf9f4;
             --white: #ffffff;
@@ -34,6 +33,8 @@
             --gray-400: #8fa89d;
             --gray-600: #4a6358;
             --gray-800: #243b30;
+            --amber: #f59e0b;
+            --red: #ef4444;
         }
 
         html {
@@ -45,7 +46,6 @@
             background: var(--white);
             color: var(--gray-800);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         /* ─── NAVIGATION ─────────────────────────── */
@@ -74,7 +74,7 @@
             width: 40px;
             height: 40px;
             border-radius: 6px;
-            background: var(--green-dark);
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-700) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -87,12 +87,6 @@
             font-size: 18px;
             font-weight: 700;
             color: var(--green-dark);
-        }
-
-        .logo-text em {
-            font-style: italic;
-            color: var(--green-500);
-            margin-left: 3px;
         }
 
         .nav-actions {
@@ -111,12 +105,13 @@
             color: var(--gray-600);
             text-decoration: none;
             transition: all .2s;
+            cursor: pointer;
         }
 
         .btn-ghost:hover {
             background: var(--gray-50);
             color: var(--gray-800);
-            border-color: var(--gray-300);
+            border-color: var(--gray-400);
         }
 
         .btn-solid {
@@ -132,446 +127,81 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            cursor: pointer;
         }
 
         .btn-solid:hover {
             background: #0a1f17;
-            text-decoration: none;
-            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(13, 43, 31, .15);
         }
 
-        /* ─── HERO ─────────────────────────── */
+        /* ─── HERO SECTION ─────────────────────────── */
         .hero {
-            padding: 80px 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            max-width: 1200px;
+            padding: 170px 40px;
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-700) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 900px;
             margin: 0 auto;
         }
 
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge i {
+            color: var(--green-100);
+        }
+
         .hero-title {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
             line-height: 1.2;
-            color: var(--gray-800);
             margin-bottom: 20px;
+            color: var(--white);
         }
 
         .hero-title em {
-            color: var(--green-500);
+            color: var(--green-100);
             font-style: italic;
         }
 
         .hero-desc {
             font-size: 16px;
             line-height: 1.7;
-            color: var(--gray-600);
-            margin-bottom: 30px;
-            max-width: 480px;
+            color: rgba(255, 255, 255, .8);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-cta {
             display: flex;
             gap: 12px;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn-primary {
-            padding: 12px 28px;
+            padding: 13px 32px;
             font-size: 15px;
             font-weight: 600;
-            border-radius: 5px;
-            border: none;
-            background: var(--green-dark);
-            color: var(--white);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all .2s;
-        }
-
-        .btn-primary:hover {
-            background: #0a1f17;
-            color: var(--white);
-        }
-
-        .btn-secondary {
-            padding: 12px 24px;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 5px;
-            border: 1px solid var(--gray-200);
-            background: var(--white);
-            color: var(--gray-600);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all .2s;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--green-100);
-            background: var(--green-50);
-            color: var(--green-600);
-        }
-
-        /* ─── HERO VISUAL ─────────────────────────── */
-        .hero-visual {
-            background: var(--green-dark);
-            border-radius: 8px;
-            padding: 30px;
-            color: var(--white);
-        }
-
-        .visual-header {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 24px;
-        }
-
-        .visual-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, .3);
-        }
-
-        .visual-label {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: .05em;
-            color: rgba(255, 255, 255, .5);
-            margin-left: auto;
-        }
-
-        .visual-scores {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .visual-score {
-            background: rgba(255, 255, 255, .08);
-            border: 1px solid rgba(255, 255, 255, .1);
             border-radius: 6px;
-            padding: 14px;
-            text-align: center;
-        }
-
-        .visual-score-val {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--green-100);
-            line-height: 1;
-            margin-bottom: 4px;
-        }
-
-        .visual-score-label {
-            font-size: 11px;
-            color: rgba(255, 255, 255, .4);
-        }
-
-        .visual-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .visual-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .visual-bar-name {
-            font-size: 12px;
-            color: rgba(255, 255, 255, .6);
-            width: 100px;
-            flex-shrink: 0;
-        }
-
-        .visual-bar-track {
-            flex: 1;
-            height: 6px;
-            background: rgba(255, 255, 255, .1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .visual-bar-fill {
-            height: 100%;
-            background: var(--green-100);
-            border-radius: 3px;
-        }
-
-        .visual-bar-pct {
-            font-size: 12px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, .5);
-            width: 35px;
-            text-align: right;
-        }
-
-        /* ─── HOW IT WORKS ─────────────────────────── */
-        .how-section {
-            padding: 60px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-top: 1px solid var(--gray-200);
-        }
-
-        .how-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .how-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-        }
-
-        .step-num {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--green-dark);
-            color: var(--white);
-            font-size: 16px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .step-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--gray-800);
-            margin-bottom: 6px;
-        }
-
-        .step-desc {
-            font-size: 13px;
-            color: var(--gray-600);
-            line-height: 1.6;
-        }
-
-        /* ─── FEATURES ─────────────────────────── */
-        .features {
-            background: var(--green-dark);
-            color: var(--white);
-            padding: 60px 40px;
-        }
-
-        .features-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            color: var(--white);
-        }
-
-        .section-title em {
-            font-style: italic;
-            color: var(--green-100);
-        }
-
-        .section-desc {
-            font-size: 16px;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, .6);
-            max-width: 500px;
-            margin-bottom: 40px;
-        }
-
-        .feat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .feat-card {
-            background: rgba(255, 255, 255, .05);
-            border: 1px solid rgba(255, 255, 255, .1);
-            border-radius: 6px;
-            padding: 24px;
-            transition: all .2s;
-        }
-
-        .feat-card:hover {
-            background: rgba(255, 255, 255, .08);
-            border-color: rgba(255, 255, 255, .15);
-        }
-
-        .feat-card.wide {
-            grid-column: span 2;
-        }
-
-        .feat-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, .1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: var(--green-100);
-            margin-bottom: 14px;
-        }
-
-        .feat-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 8px;
-        }
-
-        .feat-desc {
-            font-size: 13px;
-            color: rgba(255, 255, 255, .6);
-            line-height: 1.6;
-        }
-
-        /* ─── WHY SECTION ─────────────────────────── */
-        .why {
-            padding: 60px 40px;
-            background: var(--white);
-        }
-
-        .why-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .section-title-light {
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--gray-800);
-            margin-bottom: 16px;
-        }
-
-        .section-title-light em {
-            color: var(--green-500);
-            font-style: italic;
-        }
-
-        .why-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .why-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 12px;
-            border-radius: 6px;
-            transition: all .2s;
-        }
-
-        .why-item:hover {
-            background: var(--gray-50);
-        }
-
-        .why-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 6px;
-            background: var(--green-50);
-            color: var(--green-600);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-
-        .why-item-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--gray-800);
-            margin-bottom: 3px;
-        }
-
-        .why-item-desc {
-            font-size: 13px;
-            color: var(--gray-600);
-            line-height: 1.5;
-        }
-
-        /* ─── CTA ─────────────────────────── */
-        .cta {
-            padding: 60px 40px;
-            background: var(--white);
-        }
-
-        .cta-inner {
-            max-width: 760px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .cta-box {
-            background: var(--green-dark);
-            border-radius: 8px;
-            padding: 50px 40px;
-            color: var(--white);
-        }
-
-        .cta-title {
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--white);
-            margin-bottom: 12px;
-        }
-
-        .cta-title em {
-            font-style: italic;
-            color: var(--green-100);
-        }
-
-        .cta-desc {
-            font-size: 15px;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, .6);
-            margin-bottom: 30px;
-        }
-
-        .cta-actions {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-cta-primary {
-            padding: 12px 28px;
-            font-size: 14px;
-            font-weight: 700;
-            border-radius: 5px;
             border: none;
             background: var(--green-100);
             color: var(--green-dark);
@@ -580,18 +210,21 @@
             align-items: center;
             gap: 8px;
             transition: all .2s;
+            cursor: pointer;
         }
 
-        .btn-cta-primary:hover {
-            background: #fff;
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
         }
 
-        .btn-cta-ghost {
-            padding: 12px 24px;
-            font-size: 14px;
+        .btn-secondary {
+            padding: 13px 28px;
+            font-size: 15px;
             font-weight: 600;
-            border-radius: 5px;
-            border: 1px solid rgba(255, 255, 255, .2);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, .3);
             background: transparent;
             color: var(--white);
             text-decoration: none;
@@ -599,122 +232,434 @@
             align-items: center;
             gap: 8px;
             transition: all .2s;
+            cursor: pointer;
         }
 
-        .btn-cta-ghost:hover {
+        .btn-secondary:hover {
             background: rgba(255, 255, 255, .1);
-            border-color: rgba(255, 255, 255, .3);
+            border-color: rgba(255, 255, 255, .5);
+        }
+
+        /* ─── FEATURES OVERVIEW ─────────────────────────── */
+        .overview {
+            padding: 60px 40px;
+            background: var(--gray-50);
+        }
+
+        .overview-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 12px;
+        }
+
+        .section-title em {
+            color: var(--green-700);
+            font-style: italic;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: all .2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--green-600);
+            box-shadow: 0 8px 20px rgba(26, 92, 64, .08);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            background: var(--green-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--green-700);
+            margin: 0 auto 14px;
+        }
+
+        .feature-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 8px;
+        }
+
+        .feature-desc {
+            font-size: 12px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* ─── EXAMPLE RESULTS ─────────────────────────── */
+        .example-section {
+            padding: 60px 40px;
+            background: var(--white);
+        }
+
+        .example-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .example-content h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 16px;
+        }
+
+        .example-content em {
+            color: var(--green-700);
+            font-style: italic;
+        }
+
+        .example-content p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-700) 100%);
+            border-radius: 12px;
+            padding: 30px;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
+
+        .result-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .overall-score {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .overall-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--green-100);
+        }
+
+        .overall-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .dimension-bars {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .dimension-bar {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 8px;
+            padding: 14px;
+        }
+
+        .dim-name {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .5);
+            margin-bottom: 8px;
+        }
+
+        .dim-score {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--green-100);
+            margin-bottom: 8px;
+        }
+
+        .dim-track {
+            height: 4px;
+            background: rgba(255, 255, 255, .1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .dim-fill {
+            height: 100%;
+            background: var(--green-100);
+            border-radius: 2px;
+        }
+
+        .dim-status {
+            font-size: 10px;
+            color: rgba(255, 255, 255, .4);
+            margin-top: 6px;
+        }
+
+        /* ─── RESEARCH INFO ─────────────────────────── */
+        .research-section {
+            padding: 60px 40px;
+            background: var(--gray-50);
+        }
+
+        .research-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .research-box {
+            background: var(--white);
+            border-left: 4px solid var(--green-700);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .research-box h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--green-dark);
+            margin-bottom: 12px;
+        }
+
+        .research-box p {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .research-box ul {
+            list-style: none;
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-left: 0;
+        }
+
+        .research-box li:before {
+            content: "✓ ";
+            color: var(--green-700);
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        
+
+        /* ─── PRIVACY DISCLAIMER ─────────────────────────── */
+        .privacy-section {
+            padding: 60px 40px;
+            background: #fff9e6;
+            border: 1px solid var(--amber);
+            border-left: 4px solid var(--amber);
+        }
+
+        .privacy-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .privacy-icon {
+            font-size: 48px;
+            color: var(--amber);
+        }
+
+        .privacy-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 12px;
+        }
+
+        .privacy-content p {
+            font-size: 13px;
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .privacy-list {
+            list-style: none;
+            font-size: 13px;
+            color: var(--gray-700);
+            line-height: 1.8;
+        }
+
+        .privacy-list li:before {
+            content: "• ";
+            color: var(--amber);
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        /* ─── REFERENCES ─────────────────────────── */
+        .references-section {
+            padding: 60px 40px;
+            background: var(--white);
+        }
+
+        .references-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reference-box {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .reference-box h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--green-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reference-box ul {
+            list-style: none;
+            font-size: 12px;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .reference-box li {
+            margin-bottom: 8px;
+            padding-left: 0;
+        }
+
+        .reference-box li:before {
+            content: "→ ";
+            color: var(--green-700);
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        .reference-box a {
+            color: var(--green-700);
+            text-decoration: none;
         }
 
         /* ─── FOOTER ─────────────────────────── */
         footer {
             background: var(--green-dark);
             color: var(--white);
-            padding: 50px 40px 20px;
+            padding: 40px;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.8;
         }
 
-        .footer-inner {
+        .footer-content {
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .footer-top {
             display: grid;
-            grid-template-columns: 1.5fr repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(255, 255, 255, .1);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: left;
         }
 
-        .footer-brand {
-            max-width: 280px;
-        }
-
-        .footer-brand-text {
-            font-size: 13px;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, .5);
-        }
-
-        .footer-col h4 {
+        .footer-col h5 {
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: .05em;
             color: rgba(255, 255, 255, .5);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
-        .footer-col ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .footer-col p {
+            color: rgba(255, 255, 255, .6);
+            line-height: 1.7;
         }
 
-        .footer-col a {
-            font-size: 13px;
-            color: rgba(255, 255, 255, .5);
-            text-decoration: none;
-            transition: color .2s;
-        }
-
-        .footer-col a:hover {
-            color: var(--green-100);
-        }
-
-        .footer-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, .3);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            border: none;
-            background: none;
-            font-size: 28px;
-            color: var(--green-dark);
-            cursor: pointer;
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            padding-top: 20px;
+            color: rgba(255, 255, 255, .4);
         }
 
         /* ─── RESPONSIVE ─────────────────────────── */
         @media (max-width: 991px) {
-            .nav {
-                padding: 0 24px;
-            }
-
-            .hero,
-            .how-section,
-            .why-inner,
-            .cta-box {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .feat-grid {
+            .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .feat-card.wide {
-                grid-column: span 1;
-            }
-
-            .how-grid {
+            .example-inner,
+            .research-grid,
+            .privacy-inner,
+            .references-grid,
+            .footer-content {
                 grid-template-columns: 1fr;
             }
 
-            .footer-top {
-                grid-template-columns: repeat(2, 1fr);
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 24px;
             }
         }
 
@@ -724,38 +669,17 @@
                 height: 60px;
             }
 
-            .mobile-menu-btn {
-                display: block;
-            }
-
             .nav-actions {
-                position: absolute;
-                top: 70px;
-                right: 16px;
-                background: #fff;
-                border: 1px solid var(--gray-200);
-                border-radius: 8px;
-                padding: 12px;
-                flex-direction: column;
-                align-items: stretch;
-                min-width: 180px;
-                display: none;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+                gap: 8px;
             }
 
-            .nav-actions.show {
-                display: flex;
+            .btn-ghost,
+            .btn-solid {
+                padding: 8px 14px;
+                font-size: 12px;
             }
 
-            .nav-actions .btn-ghost,
-            .nav-actions .btn-solid {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .hero,
-            .how-section,
-            .cta {
+            .hero {
                 padding: 40px 20px;
             }
 
@@ -763,16 +687,32 @@
                 font-size: 28px;
             }
 
-            .how-grid,
-            .feat-grid {
+            .hero-desc {
+                font-size: 14px;
+            }
+
+            .overview,
+            .example-section,
+            .research-section,
+            .privacy-section,
+            .references-section {
+                padding: 40px 20px;
+            }
+
+            .features-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .feature-card {
+                padding: 20px;
             }
 
             .section-title {
-                font-size: 24px;
+                font-size: 20px;
             }
 
-            .footer-top {
+            .dimension-bars {
                 grid-template-columns: 1fr;
             }
         }
@@ -785,12 +725,8 @@
     <nav class="nav">
         <a href="/" class="nav-logo">
             <div class="logo-mark">L</div>
-            <span class="logo-text">Literacy<em>AI</em></span>
+            <span class="logo-text">LiteraSense</span>
         </a>
-
-        <button class="mobile-menu-btn">
-            <i class="bi bi-list"></i>
-        </button>
 
         <div class="nav-actions">
             @auth
@@ -800,7 +736,7 @@
             @else
                 <a href="{{ route('login') }}" class="btn-ghost">Masuk</a>
                 <a href="{{ route('register') }}" class="btn-solid">
-                    Daftar Gratis <i class="bi bi-arrow-right"></i>
+                    Daftar <i class="bi bi-arrow-right"></i>
                 </a>
             @endauth
         </div>
@@ -808,328 +744,260 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div>
+        <div class="hero-inner">
             <h1 class="hero-title">
-                Ukur, Pahami &<br>
-                Tingkatkan <em>Literasi AI</em><br>
-                Anda
+                Ukur & Pahami<br>
+                <em>Literasi AI</em> Anda
             </h1>
             <p class="hero-desc">
-                Literacy AI membantu mahasiswa dan tenaga pendidik mengukur kemampuan literasi kecerdasan buatan secara
-                terstruktur — dengan asesmen ilmiah, modul pembelajaran adaptif, dan analisis hasil yang mendalam.
+                LiteraSense adalah platform asesmen literasi kecerdasan buatan berbasis instrumen ilmiah
+                yang dirancang khusus untuk sivitas akademika Politeknik Negeri Jakarta.
+                Dapatkan pengukuran terstruktur, analisis mendalam, dan rekomendasi pembelajaran yang dipersonalisasi.
             </p>
             <div class="hero-cta">
                 @guest
                     <a href="{{ route('register') }}" class="btn-primary">
-                        Mulai Sekarang <i class="bi bi-arrow-right"></i>
+                        <i class="bi bi-play-fill"></i> Mulai Asesmen
                     </a>
                     <a href="{{ route('login') }}" class="btn-secondary">
-                        Sudah punya akun? <i class="bi bi-chevron-right"></i>
+                        Masuk Akun <i class="bi bi-chevron-right"></i>
                     </a>
                 @else
                     <a href="{{ route('dashboard') }}" class="btn-primary">
-                        Ke Dashboard <i class="bi bi-arrow-right"></i>
+                        <i class="bi bi-graph-up"></i> Ke Dashboard
                     </a>
                 @endguest
             </div>
         </div>
-
-        <div class="hero-visual">
-            <div class="visual-header">
-                <span class="visual-dot"></span>
-                <span class="visual-dot"></span>
-                <span class="visual-dot"></span>
-                <span class="visual-label">Hasil Literasi AI</span>
-            </div>
-
-            <div class="visual-scores">
-                <div class="visual-score">
-                    <div class="visual-score-val">78%</div>
-                    <div class="visual-score-label">Skor Total</div>
-                </div>
-                <div class="visual-score">
-                    <div class="visual-score-val">Good</div>
-                    <div class="visual-score-label">Predikat</div>
-                </div>
-                <div class="visual-score">
-                    <div class="visual-score-val">4/6</div>
-                    <div class="visual-score-label">Kategori Lulus</div>
-                </div>
-            </div>
-
-            <div class="visual-bars">
-                <div class="visual-bar">
-                    <span class="visual-bar-name">AI Fundamentals</span>
-                    <div class="visual-bar-track">
-                        <div class="visual-bar-fill" style="width:88%;"></div>
-                    </div>
-                    <span class="visual-bar-pct">88%</span>
-                </div>
-                <div class="visual-bar">
-                    <span class="visual-bar-name">AI Ethics</span>
-                    <div class="visual-bar-track">
-                        <div class="visual-bar-fill" style="width:42%;"></div>
-                    </div>
-                    <span class="visual-bar-pct">42%</span>
-                </div>
-                <div class="visual-bar">
-                    <span class="visual-bar-name">Data Literacy</span>
-                    <div class="visual-bar-track">
-                        <div class="visual-bar-fill" style="width:75%;"></div>
-                    </div>
-                    <span class="visual-bar-pct">75%</span>
-                </div>
-                <div class="visual-bar">
-                    <span class="visual-bar-name">Prompt Eng.</span>
-                    <div class="visual-bar-track">
-                        <div class="visual-bar-fill" style="width:91%;"></div>
-                    </div>
-                    <span class="visual-bar-pct">91%</span>
-                </div>
-            </div>
-        </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="how-section">
-        <div class="how-grid">
-            <div class="how-step">
-                <div class="step-num">1</div>
-                <div>
-                    <p class="step-title">Ikuti Asesmen</p>
-                    <p class="step-desc">Jawab pertanyaan Likert dan pilihan ganda yang dirancang untuk mengukur
-                        literasi AI secara komprehensif.</p>
-                </div>
-            </div>
-            <div class="how-step">
-                <div class="step-num">2</div>
-                <div>
-                    <p class="step-title">Lihat Hasil Analitik</p>
-                    <p class="step-desc">Dapatkan laporan mendalam per kategori dengan predikat, skor, dan grafik radar
-                        literasi Anda.</p>
-                </div>
-            </div>
-            <div class="how-step">
-                <div class="step-num">3</div>
-                <div>
-                    <p class="step-title">Pelajari Modulnya</p>
-                    <p class="step-desc">Sistem merekomendasikan modul pembelajaran tepat sasaran berdasarkan kategori
-                        yang perlu ditingkatkan.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <section class="features">
-        <div class="features-inner">
-            <h2 class="section-title">
-                Semua yang Dibutuhkan untuk<br>
-                <em>Mengukur & Berkembang</em>
-            </h2>
-            <p class="section-desc">Dirancang khusus untuk lingkungan akademik — dari mahasiswa hingga dosen pengelola.
-            </p>
-
-            <div class="feat-grid">
-                <div class="feat-card">
-                    <div class="feat-icon"><i class="bi bi-patch-check-fill"></i></div>
-                    <h3 class="feat-title">Asesmen Terstruktur</h3>
-                    <p class="feat-desc">Kuesioner dua tahap: Likert scale dan pilihan ganda. Dirancang mengikuti
-                        instrumen pengukuran literasi digital yang valid.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon"><i class="bi bi-graph-up-arrow"></i></div>
-                    <h3 class="feat-title">Analitik Hasil Mendalam</h3>
-                    <p class="feat-desc">Laporan lengkap dengan radar chart, skor per kategori, predikat, dan riwayat
-                        pengukuran historis.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon"><i class="bi bi-book-half"></i></div>
-                    <h3 class="feat-title">Modul Pembelajaran</h3>
-                    <p class="feat-desc">Sistem merekomendasikan modul berdasarkan skor kategori untuk pembelajaran
-                        yang lebih terarah.</p>
-                </div>
-                <div class="feat-card wide">
-                    <div class="feat-icon"><i class="bi bi-person-video3"></i></div>
-                    <h3 class="feat-title">Panel Manajemen untuk Dosen</h3>
-                    <p class="feat-desc">Kelola bank soal, template jawaban, dan modul pembelajaran dengan mudah. Buat
-                        pertanyaan, atur bobot, dan monitor progres mahasiswa dalam satu platform.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon"><i class="bi bi-translate"></i></div>
-                    <h3 class="feat-title">Bilingual Lengkap</h3>
-                    <p class="feat-desc">Antarmuka tersedia dalam Bahasa Indonesia dan English. Ganti bahasa kapan saja
-                        dari pengaturan.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Section -->
-    <section class="why">
-        <div class="why-inner">
-            <div>
-                <h2 class="section-title-light">
-                    Lebih dari Sekadar<br><em>Kuis Biasa</em>
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="overview-inner">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Fitur <em>Unggulan</em>
                 </h2>
-                <p class="section-desc">Platform ini dibangun di atas kerangka ilmiah pengukuran literasi digital,
-                    bukan sekadar tes pengetahuan umum.</p>
-
-                <div class="why-list">
-                    <div class="why-item">
-                        <div class="why-icon"><i class="bi bi-clipboard2-data-fill"></i></div>
-                        <div>
-                            <p class="why-item-title">Instrumen Pengukuran Valid</p>
-                            <p class="why-item-desc">Soal dan rubrik penilaian mengacu pada framework literasi AI yang
-                                terstruktur.</p>
-                        </div>
-                    </div>
-                    <div class="why-item">
-                        <div class="why-icon"><i class="bi bi-arrow-repeat"></i></div>
-                        <div>
-                            <p class="why-item-title">Asesmen Berulang</p>
-                            <p class="why-item-desc">Lakukan asesmen berkali-kali untuk memantau perkembangan literasi
-                                AI Anda dari waktu ke waktu.</p>
-                        </div>
-                    </div>
-                    <div class="why-item">
-                        <div class="why-icon"><i class="bi bi-mortarboard-fill"></i></div>
-                        <div>
-                            <p class="why-item-title">Dirancang untuk Akademik</p>
-                            <p class="why-item-desc">Cocok untuk perguruan tinggi, penelitian, maupun pelatihan
-                                literasi digital formal.</p>
-                        </div>
-                    </div>
-                    <div class="why-item">
-                        <div class="why-icon"><i class="bi bi-shield-check-fill"></i></div>
-                        <div>
-                            <p class="why-item-title">Aman & Terpercaya</p>
-                            <p class="why-item-desc">Data asesmen tersimpan aman dengan akses dikontrol berdasarkan
-                                peran pengguna.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <div
-                    style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 6px; padding: 20px; margin-bottom: 16px;">
-                    <p style="font-size:13px; font-weight:700; color:var(--gray-800); margin-bottom:14px;">Distribusi
-                        Skor Kategori</p>
-                    <div style="display:flex; flex-direction:column; gap:10px;">
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            <span style="font-size:12px; width:80px; color:var(--gray-600); font-weight:500;">AI
-                                Fundamentals</span>
-                            <div style="flex:1; height:6px; background:var(--gray-100); border-radius:3px;">
-                                <div style="width:84%; height:100%; background:var(--green-500); border-radius:3px;">
-                                </div>
-                            </div>
-                            <span
-                                style="font-size:12px; font-weight:600; color:var(--gray-600); width:30px; text-align:right;">84%</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            <span style="font-size:12px; width:80px; color:var(--gray-600); font-weight:500;">Prompt
-                                Engineering</span>
-                            <div style="flex:1; height:6px; background:var(--gray-100); border-radius:3px;">
-                                <div style="width:76%; height:100%; background:var(--green-500); border-radius:3px;">
-                                </div>
-                            </div>
-                            <span
-                                style="font-size:12px; font-weight:600; color:var(--gray-600); width:30px; text-align:right;">76%</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            <span style="font-size:12px; width:80px; color:var(--gray-600); font-weight:500;">AI
-                                Ethics</span>
-                            <div style="flex:1; height:6px; background:var(--gray-100); border-radius:3px;">
-                                <div style="width:49%; height:100%; background:#f59e0b; border-radius:3px;"></div>
-                            </div>
-                            <span
-                                style="font-size:12px; font-weight:600; color:var(--gray-600); width:30px; text-align:right;">49%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-        <div class="cta-inner">
-            <div class="cta-box">
-                <h2 class="cta-title">
-                    Siap Mengetahui<br><em>Seberapa Jauh</em> Literasi<br>AI Anda?
-                </h2>
-                <p class="cta-desc">
-                    Mulai asesmen literasi AI Anda sekarang — gratis, terstruktur, dan hasilnya langsung bisa
-                    dianalisis.
+                <p class="section-subtitle">
+                    Platform yang dirancang untuk mengukur literasi AI secara komprehensif dan terukur
                 </p>
-                <div class="cta-actions">
-                    @guest
-                        <a href="{{ route('register') }}" class="btn-cta-primary">
-                            Daftar & Mulai Asesmen <i class="bi bi-arrow-right"></i>
-                        </a>
-                        <a href="{{ route('login') }}" class="btn-cta-ghost">
-                            Masuk <i class="bi bi-chevron-right"></i>
-                        </a>
-                    @else
-                        <a href="{{ route('dashboard') }}" class="btn-cta-primary">
-                            Ke Dashboard <i class="bi bi-arrow-right"></i>
-                        </a>
-                    @endauth
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-clipboard2-pulse"></i></div>
+                    <h3 class="feature-title">Asesmen Terstruktur</h3>
+                    <p class="feature-desc">40 pertanyaan Likert + 20 MCQ berbasis instrumen penelitian yang valid dan
+                        reliabel</p>
                 </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h3 class="feature-title">Analitik Mendalam</h3>
+                    <p class="feature-desc">Laporan detail dengan breakdown per dimensi, visualisasi, dan interpretasi
+                        hasil</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-book-fill"></i></div>
+                    <h3 class="feature-title">Rekomendasi Pembelajaran</h3>
+                    <p class="feature-desc">Sistem otomatis merekomendasikan konten pembelajaran berdasarkan kebutuhan
+                        Anda</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+                    <h3 class="feature-title">Aman & Terpercaya</h3>
+                    <p class="feature-desc">Data tersimpan aman dengan enkripsi dan privacy policy yang jelas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Results -->
+    <section class="example-section">
+        <div class="example-inner">
+            <div class="example-content">
+                <h3>Contoh Hasil <em>Literasi AI</em></h3>
+                <p>
+                    Setelah menyelesaikan asesmen, Anda akan mendapatkan laporan komprehensif yang menampilkan:
+                </p>
+                <p>
+                    <strong>• Overall Score:</strong> Skor total literasi AI Anda (0-100)<br>
+                    <strong>• Skor Per Dimensi:</strong> Breakdown untuk 4 dimensi pembelajaran<br>
+                    <strong>• Kategori Status:</strong> Rendah, Sedang, atau Tinggi<br>
+                    <strong>• Visualisasi:</strong> Radar chart untuk perbandingan dimensi<br>
+                    <strong>• Rekomendasi:</strong> Modul pembelajaran yang sesuai
+                </p>
+            </div>
+
+            <div>
+                <div class="result-card">
+                    <div class="result-header">
+                        <span class="result-title">📊 Sample AI Literacy Report</span>
+                        <div class="overall-score">
+                            <div class="overall-value">78%</div>
+                            <div class="overall-label">Overall Score</div>
+                        </div>
+                    </div>
+
+                    <div class="dimension-bars">
+                        <div class="dimension-bar">
+                            <div class="dim-name">Conceptual Understanding</div>
+                            <div class="dim-score">82%</div>
+                            <div class="dim-track">
+                                <div class="dim-fill" style="width: 82%;"></div>
+                            </div>
+                            <div class="dim-status">✓ Tinggi</div>
+                        </div>
+
+                        <div class="dimension-bar">
+                            <div class="dim-name">Application & Skills</div>
+                            <div class="dim-score">75%</div>
+                            <div class="dim-track">
+                                <div class="dim-fill" style="width: 75%;"></div>
+                            </div>
+                            <div class="dim-status">✓ Tinggi</div>
+                        </div>
+
+                        <div class="dimension-bar">
+                            <div class="dim-name">Critical Thinking</div>
+                            <div class="dim-score">76%</div>
+                            <div class="dim-track">
+                                <div class="dim-fill" style="width: 76%;"></div>
+                            </div>
+                            <div class="dim-status">✓ Tinggi</div>
+                        </div>
+
+                        <div class="dimension-bar">
+                            <div class="dim-name">Ethical Awareness</div>
+                            <div class="dim-score">79%</div>
+                            <div class="dim-track">
+                                <div class="dim-fill" style="width: 79%;"></div>
+                            </div>
+                            <div class="dim-status">✓ Tinggi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Info -->
+    <section class="research-section">
+        <div class="research-inner">
+            <div class="section-header" style="grid-column: 1/-1; margin-bottom: 40px;">
+                <h2 class="section-title">
+                    Tentang <em>Penelitian</em>
+                </h2>
+                <p class="section-subtitle">
+                    Platform ini dikembangkan dalam konteks penelitian akademik
+                </p>
+            </div>
+
+            <div class="research-grid">
+
+                <div class="research-box">
+                    <h4><i class="bi bi-person"></i> Peneliti 1</h4>
+                    <p><strong>Dr., Ir. DEWI YANTI LILIANA, S.Kom., M.Kom</strong></p>
+                    <p style="color: var(--gray-500);">Dosen Teknik Informatika</p>
+                    <p>Politeknik Negeri Jakarta (PNJ)</p>
+                </div>
+
+                <div class="research-box">
+                    <h4><i class="bi bi-person"></i> Peneliti 2</h4>
+                    <p><strong>Muhammad Fauzan Permana</strong></p>
+                    <p style="color: var(--gray-500);">Mahasiswa Teknik Informatika</p>
+                    <p>Politeknik Negeri Jakarta (PNJ)</p>
+                </div>
+
+                <div class="research-box">
+                    <h4><i class="bi bi-journal-bookmark"></i> Judul Penelitian</h4>
+                    <p><strong>PENGEMBANGAN RESPONSIBLE AI DI POLITEKNIK NEGERI JAKARTA</strong></p>
+                </div>
+
+                <div class="research-box">
+                    <h4><i class="bi bi-journal-bookmark"></i> Sub Judul</h4>
+                    <p><strong>PENGEMBANGAN DASHBOARD AI LITERACY SCORE UNTUK MENINGKATKAN LITERASI ARTIFICIAL
+                            INTELLIGENCE DI POLITEKNIK NEGERI JAKARTA</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Disclaimer -->
+    <section class="privacy-section">
+        <div class="privacy-inner">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div class="privacy-icon"><i class="bi bi-exclamation-circle"></i></div>
+            </div>
+
+            <div class="privacy-content">
+                <h3><i class="bi bi-shield-lock"></i> Pemberitahuan Privasi & Penggunaan Data</h3>
+
+                <p>
+                    <strong>Pengumpulan Data untuk Kepentingan Penelitian</strong>
+                </p>
+
+                <p>
+                    Platform LiteraSense mengumpulkan data asesmen Anda <strong>HANYA untuk kepentingan penelitian
+                        akademik</strong>
+                    yang dilakukan sebagai bagian dari skripsi di Politeknik Negeri Jakarta.
+                </p>
+
+                <ul class="privacy-list">
+                    <li><strong>Data yang Dikumpulkan:</strong> Respons asesmen, profil pengguna (nama, jurusan,
+                        semester)</li>
+                    <li><strong>Penggunaan Data:</strong> Analisis hasil penelitian, evaluasi instrumen, improvement
+                        sistem</li>
+                    <li><strong>Keamanan:</strong> Data disimpan secara aman dengan enkripsi end-to-end</li>
+                    <li><strong>Transparansi:</strong> Tidak ada penjualan atau sharing data ke pihak ketiga</li>
+                    <li><strong>Penghapusan:</strong> Data akan <strong>DIHAPUS SEPENUHNYA</strong> 6 bulan setelah
+                        penelitian berakhir</li>
+                    <li><strong>Hak Anda:</strong> Anda dapat meminta penghapusan data kapan saja dengan menghubungi
+                        admin</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- References -->
+    <section class="references-section">
+        <div class="references-inner">
+            <div class="section-header" style="grid-column: 1/-1; margin-bottom: 40px;">
+                <h2 class="section-title">
+                    Referensi <em>Instrumen & Soal</em>
+                </h2>
+            </div>
+
+            <div class="reference-box">
+                <h4><i class="bi bi-journal-bookmark"></i> Framework dan Soal Literasi AI</h4>
+                <ul>
+                    <a class="reference-link" target="_blank" href="https://www.researchgate.net/publication/339272039_What_is_AI_Literacy_Competencies_and_Design_Considerations">
+                        <li>Long, D. and Magerko, B. (2020) 'What is AI Literacy? Competencies and Design Considerations', in Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems. New York: Association for Computing Machinery, pp. 1-16.</li>
+                    </a>
+                    <a class="reference-link" target="_blank" href="https://researchportal.hkust.edu.hk/en/publications/conceptualizing-ai-literacy-an-exploratory-review">
+                        <li>Ng, D. T. K., Leung, J. K. L., Chu, S. K. W. and Qiao, M. S. (2021) 'Conceptualizing AI literacy: An exploratory review', Computers and Education: Artificial Intelligence, 2, p. 100041. doi: 10.1016/j.caeai.2021.100041.</li>
+                    </a>
+                    <a class="reference-link" target="_blank" href="https://pedagogia.umsida.ac.id/index.php/pedagogia/article/view/2097">
+                        <li>Prasetyoningrum, I. D., Fajar, M. and Ratnawati, D. P. (2026) 'Artificial Intelligence Usage and Determinants of Student Academic Achievement', Pedagogia: Jurnal Pendidikan, 15(1).</li>
+                    </a>
+                    <a class="reference-link" target="_blank" href="https://journal.uns.ac.id/index.php/isep/article/view/2757">
+                        <li>Suwahyu, I., Waratman, A. A. and Pratama, A. A. (2024) 'Analisis Literasi AI Mahasiswa Pada Perguruan Tinggi', INTEC Journal: Information Technology Education Journal, 3(1).</li>
+                    </a>
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-inner">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <div style="font-weight:700; font-size:16px; margin-bottom:8px;">LiteracyAI</div>
-                    <p class="footer-brand-text">Platform asesmen literasi kecerdasan buatan berbasis instrumen ilmiah
-                        untuk lingkungan akademik.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Platform</h4>
-                    <ul>
-                        <li><a href="{{ route('login') }}">Asesmen Literasi</a></li>
-                        <li><a href="{{ route('login') }}">Modul Pembelajaran</a></li>
-                        <li><a href="{{ route('login') }}">Laporan & Analitik</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Pengguna</h4>
-                    <ul>
-                        <li><a href="{{ route('register') }}">Daftar Mahasiswa</a></li>
-                        <li><a href="{{ route('login') }}">Masuk Dosen</a></li>
-                        <li><a href="{{ route('login') }}">Portal Admin</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Lainnya</h4>
-                    <ul>
-                        <li><a href="#">Tentang Platform</a></li>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; {{ date('Y') }} Literacy AI. Semua hak dilindungi.</p>
-                <p>Platform aktif & terus dikembangkan</p>
-            </div>
+
+        <div class="footer-divider">
+            <p>
+                © {{ date('Y') }} LiteraSense - Politeknik Negeri Jakarta<br>
+                Platform ini dikembangkan dalam konteks penelitian akademik dengan standar etika penelitian
+                internasional.
+            </p>
         </div>
     </footer>
-
-    <script>
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navActions = document.querySelector('.nav-actions');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navActions.classList.toggle('show');
-        });
-    </script>
 
 </body>
 

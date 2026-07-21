@@ -29,6 +29,11 @@ class Answer extends Model
     {
         return $this->belongsTo(Question::class, 'id_question', 'id');
     }
+    
+    public function answers()
+    {
+        return $this->hasMany(UserAnswer::class, 'answer_id');
+    }
 
     /**
      * Answer has many translations.

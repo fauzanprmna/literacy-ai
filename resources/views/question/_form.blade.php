@@ -263,8 +263,8 @@
         <div class="content-container">
             @for ($i = 0; $i < 4; $i++)
                 @php
-                    $existingId = $existingAnswers[$i]['translations'][0]['name'] ?? ($existingAnswers[$i]['name'] ?? '');
-                    $existingEn = $existingAnswers[$i]['translations'][1]['name'] ?? '';
+                    $existingId = $existingAnswers[$i]['translations'][1]['name'] ?? ($existingAnswers[$i]['name'] ?? '');
+                    $existingEn = $existingAnswers[$i]['translations'][0]['name'] ?? '';
                     $isCorrect  = in_array((string)$i, $mcCorrectOld) || (!empty($existingAnswers[$i]['bobot'] ?? null) && $existingAnswers[$i]['bobot']);
                 @endphp
                 <div class="mc-answer-row">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\ML\ContentClassification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -33,6 +34,11 @@ class Category extends Model
     public function moduls(): HasMany
     {
         return $this->hasMany(Modul::class, 'id_kategori', 'id');
+    }
+
+    public function dimension(): HasMany
+    {
+        return $this->hasMany(ContentClassification::class, 'dimension', 'name');
     }
 
     /**

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengukuranController;
+use App\Http\Controllers\AssessmentHistoryController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\SettingsController;
 
@@ -36,6 +37,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 Route::middleware('auth')->group(function () {
     // dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // admin dashboard
+    Route::get('/admin', [App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     // settings
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
@@ -44,8 +47,16 @@ Route::middleware('auth')->group(function () {
     // pengukuran questionnaire
     Route::get('/literacy-ai/pengukuran', [PengukuranController::class, 'show'])->name('pengukuran.index');
 
+    // Assessment History
+    Route::get('/assessments/history', [AssessmentHistoryController::class, 'index'])->name('assessments.history');
+    Route::delete('/assessments/history/delete/{sessionKey}/{userId}', [AssessmentHistoryController::class, 'delete'])->name('assessments.delete');
+    Route::get('/assessments/history/export', [AssessmentHistoryController::class, 'exportPDF'])->name('assessments.history.export');
+    Route::get('/assessments/history/{sessionKey}/{userId}', [AssessmentHistoryController::class, 'show'])->name('assessments.detail');
+    Route::get('/assessments/history/{sessionKey}/{userId}/export', [AssessmentHistoryController::class, 'exportPDF'])->name('assessments.history.export.session');
+
     // Likert Scale Flow
     Route::get('/literacy-ai/pengukuran/info-likert', [PengukuranController::class, 'infoLikert'])->name('pengukuran.info.likert');
+    Route::post('/literacy-ai/pengukuran/start', [PengukuranController::class, 'startWithConsent'])->name('pengukuran.start');
     Route::get('/literacy-ai/pengukuran/kuesioner-likert', [PengukuranController::class, 'kuesionerLikert'])->name('pengukuran.kuesioner.likert');
     Route::post('/literacy-ai/pengukuran/store-likert', [PengukuranController::class, 'storeLikert'])->name('pengukuran.store.likert');
 
@@ -61,6 +72,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('modul', ModulController::class);
     Route::get('/content/{content}', [ModulController::class, 'showContent'])->name('modul.showContent');
+    Route::get('/sumber-belajar', [ModulController::class, 'scraper'])->name('scraper');
     Route::resource('category', CategoryController::class);
     Route::get('/modul/category/{category}', [ModulController::class, 'showByCategory'])->name('modul.by-category');
     Route::resource('answer-template', AnswerTemplateController::class);

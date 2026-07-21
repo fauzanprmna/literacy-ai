@@ -217,7 +217,7 @@
                         @php
                             // {{-- Nilai yang dikirim: questionId:answerId:bobot --}}
                             // {{-- bobot sudah benar dari DB: question->bobot jika is_correct, 0 jika salah --}}
-                            $val     = $question->id . ':' . $ans->id . ':' . $ans->bobot;
+                            $val     = $question->id . ':' . $ans->id . ':' . 'multiple_choice' . ':' . $ans->bobot ;
                             $checked = $isAnswered && $checkedValue === $val;
                             $letter  = chr(65 + $loop->index); // A, B, C, D
                         @endphp

@@ -324,7 +324,7 @@
                 <div class="likert-options">
                     @foreach ($answers as $ans)
                         @php
-                            $val = $question->id . ':' . $ans->id . ':' . $ans->bobot;
+                            $val = $question->id . ':' . $ans->id . ':' . 'likert' . ':' . $ans->bobot;
                             $checked = $isChecked && $checkedValue == $val;
                         @endphp
                         <div class="likert-option">

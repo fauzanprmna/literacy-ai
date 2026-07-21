@@ -243,7 +243,7 @@
                     @foreach ($question->answers as $i => $ans)
                         <div class="answer-item {{ $ans->bobot ? 'correct' : '' }}">
                             <span class="answer-idx">{{ chr(65 + $i) }}</span>
-                            <span>{{ $ans->name }}</span>
+                            <span>{{ $ans->translation->name ?? '—' }}</span>
                             @if ($ans->bobot)
                                 <span class="correct-tag"><i class="bi bi-check"></i> Benar</span>
                             @endif
